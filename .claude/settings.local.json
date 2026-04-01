@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(where pdftotext:*)",
+      "Bash(pdftotext C:/Users/starf/Downloads/Chap3-SQL.pdf -)",
+      "Bash(pdftotext C:/Users/starf/Downloads/Chap4-organisations.pdf -)"
+    ]
+  }
+}

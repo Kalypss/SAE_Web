@@ -1,0 +1,218 @@
+Légende des opérateurs algébriques relationnels :
+π (Pi)     : Projection (choix des colonnes)
+σ (Sigma)  : Sélection / Restriction (filtre WHERE)
+⨝          : Jointure naturelle ou équi-jointure
+⟕          : Jointure externe gauche (Left Outer Join)
+⟖          : Jointure externe droite (Right Outer Join)
+ρ (Rho)    : Renommage
+⋃          : Union
+⋂          : Intersection
+- (Moins)  : Différence
+F()        : Fonctions d''agrégation (COUNT, SUM, MAX, MIN, AVG)
+γ (Gamma)  : Opérateur de regroupement (GROUP BY)
+
+
+-- Requete 1 : Lister tous les animaux avec leur espece et enclos
+π(id_animaux, nom_animal, nomU_espece, poids_animal, regime_alimentaire_animal, id_enclo, nom_zone)
+  (Animaux ⨝ Especes ⨝ Enclos ⨝ Zone)
+
+-- Requete 2 : Lister les especes menacees et le nombre d''animaux concernes
+γ(id_espece, nomU_espece, nomL_espece ; COUNT(id_animaux)) (
+  σ(est_menace = 1) (Especes ⨝ Animaux)
+)
+
+-- Requete 3 : Trouver le soignant responsable de chaque animal
+π(nom_animal, nomU_espece, prenom_personnel, nom_personnel, type_personnel)
+  (Animaux ⨝ Personnel ⨝ Especes)
+
+-- Requete 4 : Chiffre d''affaires total par boutique
+γ(id_boutique, type_boutique, nom_zone ; SUM(montant_ca)) (
+  Boutique ⨝ Zone ⨝ Chiffre_affaire
+)
+
+-- Requete 5 : Evolution mensuelle du CA total du zoo
+γ(mois_ca, annee_ca ; SUM(montant_ca)) (
+  Chiffre_affaire
+)
+
+-- Requete 6 : Prestations accessibles par niveau de parrainage
+π(nom_visiteur, prenom_visiteur, niveau, description_prestation)
+  (Parrainage ⨝ Visiteur ⨝ Attribuer ⨝ Prestation)
+
+-- Requete 7 : Hierarchie du personnel (chef et subordonnes)
+π(sub.prenom_personnel, sub.nom_personnel, sub.type_personnel, chef.prenom_personnel, chef.nom_personnel) (
+  ρ(sub, Personnel) ⟕(sub.id_chef = chef.id_personnel) ρ(chef, Personnel)
+)
+
+-- Requete 8 : Historique de carriere complet d''un employe
+π(prenom_personnel, nom_personnel, type_poste, date_debut, date_fin, salaire) (
+  σ(nom_personnel = ''Dupont'') (Historique_emploi ⨝ Personnel)
+)
+
+-- Requete 9 : Especes pouvant cohabiter
+π(e1.nomU_espece, e2.nomU_espece) (
+  σ(id_espece_1 < id_espece_2) (
+    Cohabitation ⨝(id_espece_1 = e1.id_espece) ρ(e1, Especes) ⨝(id_espece_2 = e2.id_espece) ρ(e2, Especes)
+  )
+)
+
+-- Requete 10 : Relations parentales (mere et pere)
+(π(''Mere'', parent.nom_animal, enfant.nom_animal)
+  (Est_mere_de ⨝ ρ(parent, Animaux) ⨝ ρ(enfant, Animaux)))
+⋃
+(π(''Pere'', parent.nom_animal, enfant.nom_animal)
+  (Est_pere_de ⨝ ρ(parent, Animaux) ⨝ ρ(enfant, Animaux)))
+
+-- Requete 11 : Particularites de chaque enclos
+γ(id_enclo, nom_zone ; GROUP_CONCAT(nom_particularite)) (
+  Enclos ⨝ Zone ⨝ Posseder_particularite ⨝ Particularite
+)
+
+-- Requete 12 : Visiteurs parrainant des animaux menaces
+π(nom_visiteur, prenom_visiteur, nom_animal, nomU_espece, niveau, contribution) (
+  σ(est_menace = 1) (Parrainage ⨝ Visiteur ⨝ Animaux ⨝ Especes)
+)
+
+-- Requete 13 : Animaux nes en 2024 ou apres (jeunes animaux)
+π(nom_animal, nomU_espece, dob_animal, poids_animal) (
+  σ(dob_animal >= ''2024-01-01'') (Animaux ⨝ Especes)
+)
+
+-- Requete 14 : Soignants qui s''occupent d''animaux hors de leur zone
+π(prenom_personnel, nom_personnel, p.id_zone, enc.id_zone, nom_animal) (
+  σ(p.id_zone IS NOT NULL ET p.id_zone ≠ enc.id_zone) (
+    Animaux ⨝ ρ(p, Personnel) ⨝ ρ(enc, Enclos) ⨝ Zone
+  )
+)
+
+-- Requete 15 : Nombre de soins par type et par mois
+γ(mois_soin, annee_soin, type_soin ; COUNT(*)) (
+  Soins
+)
+
+-- Requete 16 : Enclos avec le plus d''animaux
+γ(id_enclo, nom_zone, surface_enclo ; COUNT(id_animaux), surface_enclo / COUNT(id_animaux)) (
+  Enclos ⨝ Zone ⨝ Animaux
+)
+
+-- Requete 17 : Sous-requete avec IN
+π(nom_animal, nomU_espece, nom_personnel) (
+  σ(id_personnel ∈ π(id_personnel) (σ(id_espece = a.id_espece) (Etre_specialiste_de))) (
+    ρ(a, Animaux) ⨝ Especes ⨝ Personnel
+  )
+)
+
+-- Requete 18 : Sous-requete avec NOT IN
+π(nom_animal, nomU_espece, nom_personnel) (
+  σ(id_personnel ∉ π(id_personnel) (σ(id_espece = a.id_espece) (Etre_specialiste_de))) (
+    ρ(a, Animaux) ⨝ Especes ⨝ Personnel
+  )
+)
+
+-- Requete 19 : EXISTS - Especes qui ont au moins un animal dans le zoo
+π(nomU_espece, nomL_espece) (
+  σ(∃ (σ(id_espece = e.id_espece) (Animaux))) (ρ(e, Especes))
+)
+
+-- Requete 20 : NOT EXISTS - Especes sans aucun animal dans le zoo
+π(nomU_espece, nomL_espece, est_menace) (
+  σ(∄ (σ(id_espece = e.id_espece) (Animaux))) (ρ(e, Especes))
+)
+
+-- Requete 21 : ALL - Soignant dont le salaire est superieur a tous les salaires boutique
+π(prenom_personnel, nom_personnel, salaire_personnel) (
+  σ(type_personnel = ''soignant'' ET salaire_personnel > ALL (π(salaire_personnel) (σ(type_personnel = ''boutique'') (Personnel)))) (
+    Personnel
+  )
+)
+
+-- Requete 22 : ANY - Personnel technique gagnant plus qu''au moins un veterinaire
+π(prenom_personnel, nom_personnel, salaire_personnel) (
+  σ(type_personnel = ''technique'' ET salaire_personnel > ANY (π(salaire_personnel) (σ(type_personnel = ''veterinaire'') (Personnel)))) (
+    Personnel
+  )
+)
+
+-- Requete 23 : DIVISION par denombrement
+π(prenom_personnel, nom_personnel) (
+  σ(nb_especes = 4) (
+    γ(id_personnel, prenom_personnel, nom_personnel ; COUNT(id_espece) → nb_especes) (
+      σ(id_espece ∈ {13,14,15,16}) (Etre_specialiste_de ⨝ Personnel)
+    )
+  )
+)
+
+-- Requete 24 : DIVISION par double negation (NOT EXISTS imbriques)
+π(prenom_personnel, nom_personnel) (
+  σ(∄ (σ(id_espece ∈ {1,2,3,4} ET ∄ (σ(id_personnel = p.id_personnel ET id_espece = e.id_espece) (Etre_specialiste_de))) (ρ(e, Especes)))) (
+    ρ(p, Personnel)
+  )
+)
+
+-- Requete 25 : DIVISION par operations ensemblistes (MINUS)
+π(prenom_personnel, nom_personnel) (
+  σ(∄ ( (π(id_espece) (σ(id_espece ∈ {9,10,11}) (Especes))) - (π(id_espece) (σ(id_personnel = p.id_personnel) (Etre_specialiste_de))) )) (
+    ρ(p, Personnel) ⨝ Etre_specialiste_de
+  )
+)
+
+-- Requete 26 : UNION - Tous les soignants ayant soit nourri soit soigne Punch
+(π(prenom_personnel, nom_personnel, ''Soin'') (σ(id_animaux = 1) (Soins ⨝ Personnel)))
+⋃
+(π(prenom_personnel, nom_personnel, ''Alimentation'') (σ(id_animaux = 1) (Alimentation ⨝ Personnel)))
+
+-- Requete 27 : INTERSECT - Visiteurs parrainant zone Singe ET zone Requin
+(π(nom_visiteur, prenom_visiteur) (σ(nom_zone = ''Singe'') (Parrainage ⨝ Visiteur ⨝ Animaux ⨝ Enclos ⨝ Zone)))
+⋂
+(π(nom_visiteur, prenom_visiteur) (σ(nom_zone = ''Requin'') (Parrainage ⨝ Visiteur ⨝ Animaux ⨝ Enclos ⨝ Zone)))
+
+-- Requete 28 : LIKE avance - Especes dont le nom latin contient ''us''
+π(nomU_espece, nomL_espece) (
+  σ(nomL_espece LIKE ''%us%'') (Especes)
+)
+
+-- Requete 29 : BETWEEN sur dates - Soins effectues au premier trimestre 2026
+π(nom_animal, type_soin, description_soin, date_soin) (
+  σ(date_soin >= ''2026-01-01'' ET date_soin <= ''2026-03-31'') (Soins ⨝ Animaux)
+)
+
+-- Requete 30 : Jointure externe gauche (LEFT OUTER JOIN)
+π(nom_zone, id_boutique, type_boutique) (
+  Zone ⟕ Boutique
+)
+
+-- Requete 31 : Jointure externe droite (RIGHT OUTER JOIN)
+π(nom_prestataire, specialite_prestataire, nature_reparation, date_reparation) (
+  Reparation ⟖ Prestataire
+)
+
+-- Requete 32 : HAVING avec SUM - Boutiques avec CA total superieur a 5000
+σ(total_ca > 5000) (
+  γ(id_boutique, type_boutique, nom_zone ; SUM(montant_ca) → total_ca) (
+    Boutique ⨝ Zone ⨝ Chiffre_affaire
+  )
+)
+
+-- Requete 33 : Vue - Fiche resumee de chaque animal (affectation algebrique)
+vue_fiche_animal ← π(id_animaux, nom_animal, nomU_espece, nomL_espece, est_menace, dob_animal, poids_animal, regime_alimentaire_animal, rfid_animal, prenom_personnel, nom_personnel, id_enclo, nom_zone) (
+  Animaux ⨝ Especes ⨝ Personnel ⨝ Enclos ⨝ Zone
+)
+
+-- Requete 34 : Auto-jointure - Paires soignant/remplacant avec salaires
+π(tit.prenom_personnel, tit.salaire_personnel, remp.prenom_personnel, remp.salaire_personnel) (
+  ρ(tit, Personnel) ⨝(tit.id_remplacant = remp.id_personnel) ρ(remp, Personnel)
+)
+
+-- Requete 35 : Sous-requete synchronisee complexe
+π(nom_animal, nomU_espece, poids_animal, nom_zone) (
+  σ(poids_animal = (γ(; MAX(poids_animal)) (σ(enc2.id_zone = enc.id_zone) (ρ(a2, Animaux) ⨝ ρ(enc2, Enclos))))) (
+    ρ(a, Animaux) ⨝ Especes ⨝ ρ(enc, Enclos) ⨝ Zone
+  )
+)
+
+-- Requete 36 : DISTINCT + COUNT + GROUP BY + HAVING combined
+σ(nb_types_soin >= 2) (
+  γ(id_personnel, prenom_personnel, nom_personnel ; COUNT_DISTINCT(type_soin) → nb_types_soin) (
+    Soins ⨝ Personnel
+  )
+)

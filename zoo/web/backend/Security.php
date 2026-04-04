@@ -75,6 +75,6 @@ class Security {
         $timestamp = date("Y-m-d H:i:s");
         $logData = sprintf("[%s] IP: %s | USER: %s | STATUS: %s" . PHP_EOL, $timestamp, $ip, $username, $status);
         
-        file_put_contents($this->logFile, $logData, FILE_APPEND | LOCK_EX);
+        @file_put_contents($this->logFile, $logData, FILE_APPEND | LOCK_EX);
     }
 }

@@ -1,9 +1,9 @@
 <?php
-require_once __DIR__ . '/../../backend/Auth.php';
+require_once __DIR__ . '/../../../backend/Auth.php';
 // Accessible à tout le monde
-Auth::checkAccess(['tous']);
+Auth::checkAccess();
 
-require_once __DIR__ . '/../../config/database.php';
+require_once __DIR__ . '/../../../config/database.php';
 
 $userId = $_SESSION['user_id'];
 $message = '';
@@ -91,7 +91,7 @@ if (!$employee) {
             <button type="submit" name="update_profile">Enregistrer les modifications</button>
         </form>
 
-        <a href="../dashboard.php" class="back-link">← Retour au dashboard</a>
+        <a href="../../dashboard.php" class="back-link">← Retour au dashboard</a>
     </div>
 </body>
 </html>

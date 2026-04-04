@@ -1,0 +1,13 @@
+[2026-04-04 19:46:10] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE 403: Role technique vers /public_html/animaux/index.php
+[2026-04-04 19:47:29] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE: Page inconnue (/public_html/home/profil/view.php)
+[2026-04-04 19:47:34] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE: Page inconnue (/public_html/home/profil/view.php)
+[2026-04-04 19:47:46] IP: 172.20.0.1 | USER: 123 | STATUS: FAILED (Wrong credentials)
+[2026-04-04 19:47:56] IP: 172.20.0.1 | USER: 999 | STATUS: SUCCESS
+[2026-04-04 19:48:51] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE 403: Role technique vers /public_html/animaux/index.php
+[2026-04-04 19:49:01] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE 403: Role technique vers /public_html/animaux/index.php
+[2026-04-04 19:50:42] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE 403: Role technique vers /public_html/animaux/index.php
+[2026-04-04 19:51:19] IP: 172.20.0.1 | USER: 999 | STATUS: SUCCESS
+[2026-04-04 20:06:13] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE: Page inconnue (/public_html/home/soins/index.php)
+[2026-04-04 20:06:18] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE: Page inconnue (/public_html/home/soins/index.php)
+[2026-04-04 20:06:41] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE: Page inconnue (/public_html/home/soins/index.php)
+[2026-04-04 20:07:47] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE: Page inconnue (/public_html/dashboard.php)

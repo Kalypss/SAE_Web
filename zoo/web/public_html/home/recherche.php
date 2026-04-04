@@ -1,9 +1,9 @@
 <?php
-require_once __DIR__ . '/../backend/Auth.php';
+require_once __DIR__ . '/../../backend/Auth.php';
 // Accessible à tout le monde, la page filtrera les résultats selon le rôle.
-Auth::checkAccess(['tous']);
+Auth::checkAccess();
 
-require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../../config/database.php';
 
 $role = $_SESSION['role'] ?? '';
 $searchQuery = $_GET['q'] ?? '';

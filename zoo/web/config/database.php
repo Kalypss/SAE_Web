@@ -1,38 +1,26 @@
 <?php
 /**
  * Fichier de connexion à une base de données Oracle.
- * Utilise les identifiants stockés dans un fichier .env.
- *
- * @author Florian SILVA
- * @version 0.1
- * @date 2026-04-01
+ * Utilise des constantes de configuration.
  */
 
-require_once 'vendor/autoload.php'; // Charger l'autoloader si tu utilises Composer
-use Dotenv\Dotenv; // Charger la librairie phpdotenv si tu l'installes
+// Importation des paramètres de connexion
+require_once __DIR__ . '/myparam.inc.php';
 
-// Charger les variables d'environnement depuis .env
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-
-// Vérifier que les variables nécessaires sont présentes
-if (!isset($_ENV['ORACLE_USER']) || !isset($_ENV['ORACLE_PASSWORD']) || !isset($_ENV['ORACLE_HOST']) || !isset($_ENV['ORACLE_PORT']) || !isset($_ENV['ORACLE_SERVICE_NAME'])) {
-    die('Variables d environnement manquantes pour la connexion Oracle.');
-}
 // Connexion à la base de données Oracle
 try {
-    $conn = oci_connect(
-        $_ENV['ORACLE_USER'],
-        $_ENV['ORACLE_PASSWORD'],
-        "//{$_ENV['ORACLE_HOST']}:{$_ENV['ORACLE_PORT']}/{$_ENV['ORACLE_SERVICE_NAME']}]"
+    $conn = @oci_connect(
+        MYUSER,
+        MYPASS,
+        MYHOST,
+        'AL32UTF8'
     );
     if (!$conn) {
         $e = oci_error();
-        throw new Exception("{$e['message']} (Code: {$e['code']})");
+        throw new Exception('Erreur de connexion à la base de données.'); // On ne dévoile pas le message d'erreur d'Oracle en prod
     }
-    echo "Connexion Oracle réussie !";
 } catch (Exception $e) {
-    echo "Erreur de connexion : {$e->getMessage()}";
-    exit(1);
+    // Log l'erreur réelle en interne si nécessaire (error_log($e->getMessage()))
+    die('Service indisponible. Veuillez réessayer plus tard.');
 }
 ?>

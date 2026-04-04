@@ -75,29 +75,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajouter'])) {
             </div>
         <?php endif; ?>
 
-        <form method="POST" action="">
-            <label>ID de connexion (ex: 1) :</label>
-            <input type="number" name="id_personnel" required>
+        <form method="post" action="">
+            <label>ID de connexion (ex: 1) :</label><br>
+            <input type="number" name="id_personnel" required><br><br>
             
-            <label>Nom :</label>
-            <input type="text" name="nom_personnel" required>
+            <label>Nom :</label><br>
+            <input type="text" name="nom_personnel" required><br><br>
             
-            <label>Prénom :</label>
-            <input type="text" name="prenom_personnel" required>
+            <label>Prénom :</label><br>
+            <input type="text" name="prenom_personnel" required><br><br>
             
-            <label>Mot de passe (sera hashé) :</label>
-            <input type="password" name="pwd_personnel" required>
+            <label>Mot de passe :</label><br>
+            <input type="password" name="pwd_personnel" required><br><br>
             
-            <label>Rôle / Type de poste :</label>
+            <label>Type / Rôle :</label><br>
             <select name="type_personnel">
-                <option value="soignant">Soignant</option>
                 <option value="veterinaire">Vétérinaire</option>
+                <option value="soignant" selected>Soignant</option>
                 <option value="boutique">Boutique</option>
                 <option value="technique">Technique</option>
                 <option value="gérant">Gérant</option>
-            </select>
+            </select><br><br>
             
-            <input type="submit" name="ajouter" value="Créer l'employé">
+            <button type="submit" name="ajouter">Ajouter cet utilisateur</button>
         </form>
         
         <a class="back-link" href="authentif.php">Retour à la page de connexion</a>

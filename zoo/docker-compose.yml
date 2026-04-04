@@ -4,13 +4,13 @@ services:
     container_name: oracle-free-db
     restart: unless-stopped
     ports:
-      - "1521:1521"    # Port Oracle SQL*Net
-      - "5500:5500"    # Port Oracle Enterprise Manager (EM Express)
+      - "1521:1521"
+      - "5500:5500"    
     environment:
-      ORACLE_PASSWORD: MdPoracleflo83!   # Mot de passe pour SYS et SYSTEM
-      ORACLE_DATABASE: FREEPDB1          # Nom de la PDB (Pluggable Database)
+      ORACLE_PASSWORD: MdPoracleflo83!  
+      ORACLE_DATABASE: FREEPDB1   
     volumes:
-      - oracle-data:/opt/oracle/oradata  # Persistance des données
+      - oracle-data:/opt/oracle/oradata 
 
   web:
     build:
@@ -19,9 +19,9 @@ services:
     container_name: zoo-web
     restart: unless-stopped
     ports:
-      - "8000:80"   # Le site sera accessible sur localhost:8000 comme avant
+      - "8000:80" 
     volumes:
-      - ./web:/var/www/html  # Monte le dossier web dans le serveur Apache
+      - ./web:/var/www/html 
 
 volumes:
   oracle-data:

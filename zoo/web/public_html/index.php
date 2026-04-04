@@ -65,9 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $security->incrementFailedAttempt();
                 $security->logAction($ip, $username, 'FAILED (Wrong credentials)');
                 $message = "Identifiants invalides.";
-                // Décommentez pour le debug temporaire uniquement :
-                $message .= " [DEBUG] Hash entré : " . $hashed_password . " | User : " . ($user ? print_r($user, true) : 'Introuvable') . " | Req: $username";
-            }
+                }
             oci_free_statement($stmt);
         }
     }

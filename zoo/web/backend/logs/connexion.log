@@ -11,3 +11,11 @@
 [2026-04-04 20:06:18] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE: Page inconnue (/public_html/home/soins/index.php)
 [2026-04-04 20:06:41] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE: Page inconnue (/public_html/home/soins/index.php)
 [2026-04-04 20:07:47] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE: Page inconnue (/public_html/dashboard.php)
+[2026-04-04 20:20:12] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE: Page inconnue (/public_html/home/alimentation/index.php)
+[2026-04-04 20:21:12] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE: Page inconnue (/public_html/home/alimentation/index.php)
+[2026-04-04 20:21:17] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE: Page inconnue (/public_html/home/alimentation/index.php)
+[2026-04-04 20:21:32] IP: 172.20.0.1 | USER: 999 | STATUS: SUCCESS
+[2026-04-04 20:21:36] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE: Page inconnue (/public_html/home/alimentation/index.php)
+[2026-04-04 20:50:01] IP: 172.20.0.1 | USER: dzqdzqdqz | STATUS: INVALID FORMAT (Regex match fails)
+[2026-04-04 20:50:05] IP: 172.20.0.1 | USER: 123 | STATUS: FAILED (Wrong credentials)
+[2026-04-04 20:50:09] IP: 172.20.0.1 | USER: 999 | STATUS: SUCCESS

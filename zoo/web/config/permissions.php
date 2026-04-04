@@ -25,6 +25,8 @@ return [
     '/public_html/home/soins/ajouter.php' => ['gérant', 'veterinaire'],
     '/public_html/home/soins/view.php' => ['gérant', 'veterinaire'],
     '/public_html/home/alimentation/ajouter.php' => ['gérant', 'soignant'],
+    '/public_html/home/alimentation/view.php' => ['gérant', 'veterinaire', 'soignant'],
+    '/public_html/home/alimentation/index.php' => ['gérant', 'soignant'],
 
     // Espèces
     '/public_html/home/especes/index.php' => ['gérant', 'veterinaire'],

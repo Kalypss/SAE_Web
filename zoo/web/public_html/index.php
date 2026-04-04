@@ -44,10 +44,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             $user = oci_fetch_assoc($stmt);
             
-            // Hachage du mot de passe en sha256 (comme lors de la création d'employé)
-            $hashed_password = hash('sha256', $password);
-
-            if ($user && $hashed_password === trim($user['PWD_PERSONNEL'])) {
+            // Hachage du mot de passe en sha256 (comme lors de la création d'employé initial)
+            $hashed_password_sha256 = hash('sha256', $password);
+            
+            // On vérifie le format bcrypt récent (password_verify) OU l'ancien format sha256
+            if ($user && (password_verify($password, trim($user['PWD_PERSONNEL'])) || $hashed_password_sha256 === trim($user['PWD_PERSONNEL']))) {
                 // Succès
                 $security->resetAttempts();
                 $security->logAction($ip, $username, 'SUCCESS');

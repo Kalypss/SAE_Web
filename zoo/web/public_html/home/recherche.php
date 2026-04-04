@@ -32,7 +32,6 @@ function isFuzzyMatch($search, $subject) {
     $words = explode(' ', $subject);
     
     foreach ($words as $word) {
-        // On vérifie la similarité uniquement si les mots ont une taille proche
         if (abs(strlen($search) - strlen($word)) <= $tolerance) {
             if (levenshtein($search, $word) <= $tolerance) {
                 return true;

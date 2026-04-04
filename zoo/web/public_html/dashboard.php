@@ -1,11 +1,9 @@
 <?php
 require_once __DIR__ . '/../backend/Auth.php';
-// Auth contrôle dynamiquement si on est connecté (et gère la redirection / suppression de cookies)
 Auth::checkAccess();
 
 require_once __DIR__ . '/../config/database.php';
 
-// Récupérer formellement l'utilisateur depuis la DB
 $userId = $_SESSION['user_id'];
 $sql = "SELECT * FROM Personnel WHERE id_personnel = :id_personnel";
 $stmt = oci_parse($conn, $sql);
@@ -14,7 +12,6 @@ oci_execute($stmt, OCI_DEFAULT);
 $employee = oci_fetch_assoc($stmt);
 oci_free_statement($stmt);
 
-// Si employé n'existe plus en Base
 if (!$employee) {
     session_destroy();
     header('Location: index.php');
@@ -34,12 +31,10 @@ function hasAccess($path) {
 
 $kpis = [];
 
-// Quelques fonctions pour simplifier les appels
 function getSingleValue($conn, $query, $userId = null) {
     $st = oci_parse($conn, $query);
     if ($userId !== null) { oci_bind_by_name($st, ':id', $userId); }
     
-    // On vérifie que la requête s'exécute bien avant de fetch
     if (!@oci_execute($st, OCI_DEFAULT)) {
         oci_free_statement($st);
         return 0;

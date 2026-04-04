@@ -110,7 +110,7 @@ function getRegimeColor($regime) {
         <div style="margin-right: 40px; text-align: center;">
             <!-- Placeholder -->
             <div style="width: 200px; height: 200px; background-color: #333; color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; border-radius: 8px;">
-                📷 Photo
+                Photo
             </div>
             
             <h1 style="margin: 10px 0 5px 0;">
@@ -143,7 +143,7 @@ function getRegimeColor($regime) {
                 <li><strong>Poids :</strong> <?php echo htmlspecialchars($animal['POIDS_ANIMAL']); ?> kg</li>
                 
                 <li><strong>Espèce :</strong> 
-                    <a href="/public_html/especes/view.php?id=<?php echo urlencode($animal['ID_ESPECE']); ?>">
+                    <a href="/public_html/home/especes/view.php?id=<?php echo urlencode($animal['ID_ESPECE']); ?>">
                         <?php echo htmlspecialchars($animal['NOMU_ESPECE']); ?>
                         <?php if ($animal['EST_MENACE'] == 1): ?>
                             🚨 (Menacée)
@@ -152,14 +152,14 @@ function getRegimeColor($regime) {
                 </li>
                 
                 <li><strong>Enclos :</strong> 
-                    <a href="/public_html/enclos/view.php?id=<?php echo urlencode($animal['ID_ENCLO']); ?>">
+                    <a href="/public_html/home/enclos/view.php?id=<?php echo urlencode($animal['ID_ENCLO']); ?>">
                         Enclos n°<?php echo htmlspecialchars($animal['ID_ENCLO']); ?> (<?php echo htmlspecialchars($animal['NOM_ZONE'] ?? ''); ?>)
                     </a>
                 </li>
                 
                 <?php if ($role !== 'soignant'): ?>
                     <li><strong>Soignant Responsable :</strong> 
-                        <a href="/public_html/personnel/view.php?id=<?php echo urlencode($animal['ID_PERSONNEL']); ?>">
+                        <a href="/public_html/home/personnel/view.php?id=<?php echo urlencode($animal['ID_PERSONNEL']); ?>">
                             <?php echo htmlspecialchars($animal['PRENOM_PERSONNEL'] . ' ' . $animal['NOM_PERSONNEL']); ?>
                         </a>
                     </li>

@@ -10,7 +10,6 @@ if (!$id_animal) {
     exit;
 }
 
-// Check animal exists
 $check_sql = "SELECT id_animaux, nom_animal FROM Animaux WHERE id_animaux = :id";
 $chk_st = oci_parse($conn, $check_sql);
 oci_bind_by_name($chk_st, ':id', $id_animal);
@@ -27,8 +26,6 @@ if (!$animal) {
 // Confirmation de suppression
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_delete'])) {
     
-    // Supprimer d'abord les dépendances s'il y en a : Soin, Alimentation, Relations (parenté), Parrainage
-    // Les contraintes ON DELETE CASCADE ne sont peut-être pas présentes
     
     // Soins
     $del = oci_parse($conn, "DELETE FROM Soins WHERE id_animaux = :id");
@@ -60,7 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_delete'])) {
     @oci_execute($del, OCI_DEFAULT);
     oci_free_statement($del);
 
-    // The Animal
     $del_animal = "DELETE FROM Animaux WHERE id_animaux = :id";
     $st = oci_parse($conn, $del_animal);
     oci_bind_by_name($st, ':id', $id_animal);

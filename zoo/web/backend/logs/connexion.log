@@ -20,3 +20,9 @@
 [2026-04-04 20:50:05] IP: 172.20.0.1 | USER: 123 | STATUS: FAILED (Wrong credentials)
 [2026-04-04 20:50:09] IP: 172.20.0.1 | USER: 999 | STATUS: SUCCESS
 [2026-04-04 21:07:29] IP: 172.20.0.1 | USER: 999 | STATUS: SUCCESS
+[2026-04-04 21:35:31] IP: 172.20.0.1 | USER: ANONYMOUS | STATUS: ACCES REFUSE: Non authentifié vers /public_html/dashboard.php
+[2026-04-04 21:35:44] IP: 172.20.0.1 | USER: 1235 | STATUS: FAILED (Wrong credentials)
+[2026-04-04 21:36:29] IP: 172.20.0.1 | USER: 1235 | STATUS: FAILED (Wrong credentials)
+[2026-04-04 21:37:09] IP: 172.20.0.1 | USER: 1234 | STATUS: FAILED (Wrong credentials)
+[2026-04-04 21:39:46] IP: 172.20.0.1 | USER: 1235 | STATUS: SUCCESS
+[2026-04-04 21:41:33] IP: 172.20.0.1 | USER: test2 | STATUS: ACCES REFUSE 403: Role veterinaire vers /public_html/home/personnel/view.php

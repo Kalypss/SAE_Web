@@ -218,7 +218,7 @@ oci_free_statement($st_enc);
 
                         <!-- Lien vers Enclos -->
                         <td>
-                            <a href="/public_html/enclos/view.php?id=<?php echo urlencode($animal['ID_ENCLO']); ?>">
+                            <a href="/public_html/home/enclos/view.php?id=<?php echo urlencode($animal['ID_ENCLO']); ?>">
                                 Enclos n°<?php echo htmlspecialchars($animal['ID_ENCLO']); ?> <br>
                                 <small>(<?php echo htmlspecialchars($animal['NOM_ZONE'] ?? '?'); ?>)</small>
                             </a>

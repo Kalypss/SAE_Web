@@ -90,6 +90,7 @@ if ($employe['TYPE_PERSONNEL'] === 'veterinaire') {
     <p style="margin-top:40px;">
         <a href="modifier.php?id=<?php echo urlencode($id_pers); ?>" style="padding:5px 10px; background:orange; color:black; text-decoration:none;">Modifier la fiche employeur</a>
         <a href="historique.php?id=<?php echo urlencode($id_pers); ?>" style="padding:5px 10px; background:#2196F3; color:white; text-decoration:none;">Consulter historique</a>
+        <a href="supprimer.php?id=<?php echo urlencode($id_pers); ?>" style="padding:5px 10px; background:#cc0000; color:white; font-weight:bold; text-decoration:none; margin-left:20px;">X Licencier / Supprimer</a>
     </p>
 </body>
 </html>

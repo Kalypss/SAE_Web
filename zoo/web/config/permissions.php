@@ -47,11 +47,12 @@ return [
     '/public_html/home/prestataires/index.php' => ['gérant', 'technique'],
     '/public_html/home/prestataires/ajouter.php' => ['gérant'],
     // Personnel
-    '/public_html/home/personnel/index.php' => ['gérant'],  
+    '/public_html/home/personnel/index.php' => ['gérant'],
     '/public_html/home/personnel/ajouter.php' => ['gérant'],
     '/public_html/home/personnel/view.php' => ['gérant'],
     '/public_html/home/personnel/modifier.php' => ['gérant'],
     '/public_html/home/personnel/historique.php' => ['gérant'],
+    '/public_html/home/personnel/supprimer.php' => ['gérant'], // Sécurité ajoutée pour licencier un membre du personnel
     // Public / Commercial (Visiteurs, Parrainages, Boutiques...)
     '/public_html/home/visiteurs/index.php' => ['gérant', 'boutique'],
     '/public_html/home/visiteurs/view.php' => ['gérant', 'boutique'],

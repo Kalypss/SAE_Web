@@ -1,47 +1,51 @@
 <?php
 /**
- * Fichier de test des données stockées dans une base Oracle.
- *
- * @author Florian SILVA
- * @version 0.1
- * @date 2026-04-01
+ * Fichier de test des données (adapté pour OCI8).
  */
-require_once '../config/database.php'; // Inclure le fichier de connexion
+
+// Inclure votre nouveau fichier myparam.inc.php qui contient MYHOST, MYUSER, MYPASS
+require_once __DIR__ . '/../aaron/myparam.inc.php';
+
+// Connexion via Oracle (OCI8)
+$conn = oci_connect(MYUSER, MYPASS, MYHOST);
+
+if (!$conn) {
+    $e = oci_error();
+    die("Erreur de connexion Oracle : " . htmlentities($e['message']));
+}
+echo "Connexion réussie avec Oracle OCI8 !<br>";
 
 // Récupérer la liste des tables
 $tables = [];
-try {
-    $stmt = oci_parse($conn, "SELECT table_name FROM user_tables");
-    oci_execute($stmt);
-    while ($row = oci_fetch_array($stmt, OCI_ASSOC)) {
-        $tables[] = $row['TABLE_NAME'];
-    }
-} catch (Exception $e) {
-    echo "Erreur lors de la récupération des tables : {$e->getMessage()}";
-    exit(1);
+$stmt = oci_parse($conn, "SELECT table_name FROM user_tables");
+oci_execute($stmt);
+while ($row = oci_fetch_array($stmt, OCI_ASSOC)) {
+    $tables[] = $row['TABLE_NAME'];
 }
 
 // Vérifier que des données existent dans une table
 if (!empty($tables)) {
     $dataExists = false;
     foreach ($tables as $table) {
-        try {
-            $stmt = oci_parse($conn, "SELECT COUNT(*) FROM $table");
-            oci_execute($stmt);
-            $count = oci_fetch_array($stmt, OCI_NUM)[0];
+        $stmtCount = oci_parse($conn, "SELECT COUNT(*) FROM \"$table\"");
+        if (oci_execute($stmtCount)) {
+            $count = oci_fetch_array($stmtCount, OCI_NUM)[0];
             if ($count > 0) {
-                echo "Données trouvées dans la table $table !";
+                echo "Données trouvées dans la table $table !<br>";
                 $dataExists = true;
                 break;
             }
-        } catch (Exception $e) {
-            echo "Erreur lors du test des données dans $table : {$e->getMessage()}";
+        } else {
+            $e = oci_error($stmtCount);
+            echo "Erreur lors du test des données dans $table : " . htmlentities($e['message']) . "<br>";
         }
     }
     if (!$dataExists) {
-        echo "Aucune donnée trouvée dans les tables testées.";
+        echo "Aucune donnée trouvée dans les tables testées.<br>";
     }
 } else {
-    echo "Aucune table trouvée dans la base Oracle.";
+    echo "Aucune table trouvée dans la base.<br>";
 }
+
+oci_close($conn);
 ?>

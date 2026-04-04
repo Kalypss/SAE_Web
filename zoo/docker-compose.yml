@@ -1,0 +1,28 @@
+services:
+  oracle-db:
+    image: gvenzl/oracle-free:slim-faststart
+    container_name: oracle-free-db
+    restart: unless-stopped
+    ports:
+      - "1521:1521"    # Port Oracle SQL*Net
+      - "5500:5500"    # Port Oracle Enterprise Manager (EM Express)
+    environment:
+      ORACLE_PASSWORD: MdPoracleflo83!   # Mot de passe pour SYS et SYSTEM
+      ORACLE_DATABASE: FREEPDB1          # Nom de la PDB (Pluggable Database)
+    volumes:
+      - oracle-data:/opt/oracle/oradata  # Persistance des données
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: zoo-web
+    restart: unless-stopped
+    ports:
+      - "8000:80"   # Le site sera accessible sur localhost:8000 comme avant
+    volumes:
+      - ./web:/var/www/html  # Monte le dossier web dans le serveur Apache
+
+volumes:
+  oracle-data:
+    driver: local

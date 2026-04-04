@@ -3,6 +3,13 @@ ini_set('display_errors', 0); // Ne pas afficher d'erreurs en prod
 error_reporting(E_ALL);
 
 require_once __DIR__ . '/../backend/Security.php';
+
+// Si l'utilisateur a déjà une session active, on le redirige directement vers le dashboard
+if (isset($_SESSION['user_id']) && !empty($_SESSION['role'])) {
+    header('Location: dashboard.php');
+    exit;
+}
+
 require_once __DIR__ . '/../config/database.php';  // Connexion activée
 $security = new Security();
 
@@ -29,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $security->incrementFailedAttempt();
         } else {
             // Requête préparée pour éviter l'injection SQL (recherche par ID_PERSONNEL)
-            $sql = "SELECT id_personnel, nom_personnel, prenom_personnel, pwd_personnel FROM Personnel WHERE id_personnel = :userid";
+            $sql = "SELECT id_personnel, nom_personnel, prenom_personnel, pwd_personnel, type_personnel FROM Personnel WHERE id_personnel = :userid";
             $stmt = oci_parse($conn, $sql);
             oci_bind_by_name($stmt, ':userid', $username);
             
@@ -48,9 +55,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['user_id'] = $user['ID_PERSONNEL'];
                 $_SESSION['prenom'] = $user['PRENOM_PERSONNEL'];
                 $_SESSION['nom'] = $user['NOM_PERSONNEL'];
+                $_SESSION['role'] = strtolower($user['TYPE_PERSONNEL']); // veterinaire, gérant, etc.
                 
                 // Redirection vers home.php (on s'assure qu'aucun output n'a eu lieu avant)
-                header('Location: home.php');
+                header('Location: dashboard.php');
                 exit;
             } else {
                 // Échec

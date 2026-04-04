@@ -1,10 +1,7 @@
 <?php
-session_start();
-// Vérifier que l'utilisateur est bien connecté, sinon, le renvoyer vers la mire
-if (!isset($_SESSION['user_id'])) {
-    header('Location: index.php');
-    exit;
-}
+require_once __DIR__ . '/../backend/Auth.php';
+// Auth contrôle dynamiquement si on est connecté (et gère la redirection / suppression de cookies)
+Auth::checkAccess(['tous']); // Exemple : "tous" permet à tout profil connecté d'accéder au dashboard
 
 require_once __DIR__ . '/../config/database.php';
 
@@ -43,5 +40,7 @@ if (!$employee) {
     </ul>
     
     <a href="logout.php">Se déconnecter</a>
+    <a href="/profil/view.php">Profil</a>
+    <a href="recherche.php">recherche</a>
 </body>
 </html>

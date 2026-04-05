@@ -1,0 +1,72 @@
+body{
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(90deg,#1A3A3A,black);
+    color: #DCCFEC;
+    margin: 0;
+}
+
+h1{
+    text-align: center;
+    font-size: 60px;
+}
+
+body > a{
+    text-decoration: none;
+    background: #DCCFEC;
+    text-align: center;
+    padding: 15px 30px;
+    border-radius: 25px;
+    display: block;
+    width: fit-content;
+    color: #4F517D;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+fieldset{
+    margin: 0 25px;
+    margin-bottom: 25px;
+    background: #4F517D;
+    border-color: #DCCFEC;
+    border-radius: 10px;
+}
+form{
+    display: flex;
+    justify-content: space-between;
+}
+input{
+
+}
+
+table{
+    width: 100%;
+    border: none;
+    text-align: center;
+    background: black;
+    border-radius: 20px;
+}
+th{
+    border-radius: 20px;
+    background: #A997DF;
+    color: black;
+}
+th a{
+    color: black;
+    text-decoration: none;
+}
+th a::after{
+    content: "▼";
+}
+td{
+    border: none;
+    border-bottom: 1px solid #4F517D;
+    margin: 0 20px;
+    font-size: larger;
+}
+td a{
+    color: white;
+    text-decoration: none;
+}
+td a::after{
+    content: "↗";
+}

@@ -76,9 +76,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Connexion</title>
 </head>
 <body>
+    <div class="gauche">
+
+    </div>
+    <div class="droite">
     <h1>Connexion</h1>
     
     <?php if (!empty($message)): ?>
@@ -86,13 +92,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php endif; ?>
 
     <form method="POST" action="">
-        <label for="username">Identifiant :</label><br>
+        <label for="username">Identifiant</label><br>
         <input type="text" id="username" name="username" required><br><br>
         
-        <label for="password">Mot de passe :</label><br>
+        <label for="password">Mot de passe</label><br>
         <input type="password" id="password" name="password" required><br><br>
         
-        <input type="submit" value="Se connecter">
+        <input type="submit" value="Se connecter" id="connex">
+
     </form>
+    <a href="mdp_oublie">mot de passe oublié ?</a>
+    <p class="condition"><br>En vous connectant vous accepter bien évidemment <a href="trup.php">les conditions générales de la vente de vôtre âme au diable</a></p>
+</div>
 </body>
 </html>

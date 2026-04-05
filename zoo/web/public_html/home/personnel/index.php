@@ -19,13 +19,15 @@ oci_free_statement($stmt);
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../styleindex.css">
     <title>Membres du Personnel</title>
 </head>
 <body>
     <a href="../../dashboard.php">← Retour au Dashboard</a>
     <h1>Liste des Employés</h1>
 
-    <a href="ajouter.php" style="display:inline-block; margin-bottom:15px; padding:8px 12px; background:#4CAF50; color:white; text-decoration:none;">+ Embaucher un employé</a>
+    <a href="ajouter.php">+ Embaucher un employé</a>
+    <br>
 
     <table border="1" cellpadding="8" cellspacing="0" width="100%">
         <thead>

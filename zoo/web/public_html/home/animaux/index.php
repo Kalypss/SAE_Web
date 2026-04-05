@@ -119,6 +119,7 @@ oci_free_statement($st_enc);
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../styleindex.css">
     <title>Liste des Animaux</title>
 </head>
 <body>
@@ -138,11 +139,11 @@ oci_free_statement($st_enc);
             <input type="hidden" name="sort" value="<?php echo htmlspecialchars($sort); ?>">
             <input type="hidden" name="order" value="<?php echo htmlspecialchars($order); ?>">
 
-            <label>Mot-clé (Nom, RFID):
+            <label>Mot-clé (Nom, RFID) :
                 <input type="text" name="search" value="<?php echo htmlspecialchars($search); ?>">
             </label>
 
-            <label>Espèce:
+            <label>Espèce :
                 <select name="espece">
                     <option value="">-- Toutes --</option>
                     <?php foreach($especes_list as $esp): ?>
@@ -153,7 +154,7 @@ oci_free_statement($st_enc);
                 </select>
             </label>
 
-            <label>Enclos:
+            <label>Enclos :
                 <select name="enclos">
                     <option value="">-- Tous --</option>
                     <?php foreach($enclos_list as $enc): ?>
@@ -164,7 +165,7 @@ oci_free_statement($st_enc);
                 </select>
             </label>
 
-            <label>Régime:
+            <label>Régime :
                 <select name="regime">
                     <option value="">-- Tous --</option>
                     <?php $regimes = ['vegetarien', 'carnivore', 'insectivore', 'filtreur', 'omnivore']; ?>

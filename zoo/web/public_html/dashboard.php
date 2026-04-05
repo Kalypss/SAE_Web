@@ -104,6 +104,7 @@ if ($role === 'gérant') {
     <div class="entete">
         <h1>Bonjour, <?php echo htmlspecialchars($employee['PRENOM_PERSONNEL']); ?> !</h1>
         <div class="bouton">
+            <a href="home/recherche.php">🔍 Recherche Globale</a>
             <a href="home/profil/mot-de-passe.php">Mon Mot de passe</a>
             <a href="logout.php" >Se déconnecter</a>
         </div>

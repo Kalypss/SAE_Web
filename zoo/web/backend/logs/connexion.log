@@ -35,3 +35,6 @@
 [2026-04-05 15:47:05] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE 403: Role technique vers /public_html/home/animaux/view.php
 [2026-04-05 15:47:26] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE 403: Role technique vers /public_html/home/animaux/view.php
 [2026-04-05 15:50:36] IP: 172.20.0.1 | USER: 999 | STATUS: SUCCESS
+[2026-04-05 16:07:25] IP: 172.20.0.1 | USER: ANONYMOUS | STATUS: ACCES REFUSE: Non authentifié vers /public_html/dashboard.php
+[2026-04-05 16:08:28] IP: 172.20.0.1 | USER: 999 | STATUS: SUCCESS
+[2026-04-05 16:10:07] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE 403: Role boutique vers /public_html/home/zones/ajouter.php

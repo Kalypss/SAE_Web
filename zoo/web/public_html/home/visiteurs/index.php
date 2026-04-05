@@ -20,13 +20,15 @@ oci_free_statement($stmt);
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../styleindex.css">
     <title>Base des Visiteurs</title>
 </head>
 <body>
     <a href="../../dashboard.php">← Retour au Dashboard</a>
     <h1>Liste des Visiteurs (Base Clientèle)</h1>
 
-    <a href="ajouter.php" style="display:inline-block; padding:10px; background:green; color:white; text-decoration:none; margin-bottom:15px;">+ Inscrire un Visiteur</a>
+    <a href="ajouter.php">+ Inscrire un Visiteur</a>
+    <br>
 
     <table border="1" cellpadding="10" cellspacing="0">
         <thead>

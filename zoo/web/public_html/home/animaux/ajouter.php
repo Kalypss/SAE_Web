@@ -86,6 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../styleajout.css">
     <title>Ajouter un animal</title>
 </head>
 <body>
@@ -99,6 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
 
     <form action="ajouter.php" method="POST">
+        <div class="animal">
         <fieldset>
             <legend>Informations de l'animal</legend>
 
@@ -180,7 +182,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         </fieldset>
 
-        <p><button type="submit">Ajouter l'animal</button></p>
+        </div>
+        <p class="bouton"><button type="submit">Ajouter l'animal</button></p>
     </form>
 </body>
 </html>

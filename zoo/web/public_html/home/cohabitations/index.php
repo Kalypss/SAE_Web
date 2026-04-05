@@ -20,6 +20,7 @@ oci_free_statement($stmt);
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../styleajout.css">
     <title>Cohabitations</title>
 </head>
 <body>

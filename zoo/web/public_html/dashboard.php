@@ -93,26 +93,35 @@ if ($role === 'gérant') {
 
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr"> 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="styledash.css">
     <title>Dashboard <?php echo htmlspecialchars($employee['TYPE_PERSONNEL']); ?></title>
 
 </head>
 <body>
-    <h1>Bonjour, <?php echo htmlspecialchars($employee['PRENOM_PERSONNEL']); ?> !</h1>
-    
-    <div>
+    <div class="entete">
+        <h1>Bonjour, <?php echo htmlspecialchars($employee['PRENOM_PERSONNEL']); ?> !</h1>
+        <div class="bouton">
+            <a href="home/profil/mot-de-passe.php">Mon Mot de passe</a>
+            <a href="logout.php" >Se déconnecter</a>
+        </div>
+    </div>
+
+    <br>
+    <div class="info">
         <h2>Vos informations (<?php echo htmlspecialchars($employee['TYPE_PERSONNEL']); ?>)</h2>
         <ul style="margin:0;">
             <li><strong>ID :</strong> <?php echo htmlspecialchars($employee['ID_PERSONNEL']); ?> - <?php echo htmlspecialchars($employee['PRENOM_PERSONNEL'] . ' ' . $employee['NOM_PERSONNEL']); ?></li>
             <li><strong>Salaire :</strong> <?php echo htmlspecialchars($employee['SALAIRE_PERSONNEL']); ?> €</li>
         </ul>
-        <br>
-        <a href="logout.php" style="margin-right: 15px;">Se déconnecter</a>
-        <a href="home/profil/mot-de-passe.php" style="margin-right: 15px;">Mon Mot de passe</a>
-        <a href="home/recherche.php" style="font-weight: bold; color: #2196F3;">Recherche Globale</a>
+        
+        
     </div>
+    <br>
+    <hr>
+    <br>
 
     <h2>Vos Tableaux de Bord (KPIs)</h2>
     <div class="kpi-container">
@@ -123,10 +132,12 @@ if ($role === 'gérant') {
             </div>
         <?php endforeach; ?>
     </div>
-
+    <br>
+    <hr>
+    <br>
     <h2>Vos Liens :</h2>
     <nav>
-        <ul>
+        <ul class="menu">
             <?php if (hasAccess('/public_html/home/animaux/index.php') || hasAccess('/public_html/home/especes/index.php') || hasAccess('/public_html/home/soins/index.php') || hasAccess('/public_html/home/alimentation/index.php')): ?>
             <li><h3>Animaux et Espèces</h3>
                 <ul>

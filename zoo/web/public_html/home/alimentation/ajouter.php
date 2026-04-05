@@ -59,6 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../styleajout.css">
     <title>Ajouter Alimentation</title>
 </head>
 <body>
@@ -72,6 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php endif; ?>
 
     <form method="POST">
+        <div class="formul">
         <p>
             <label>Saisisseur / Personnel :<br>
             <select name="id_personnel" required>
@@ -99,8 +101,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="number" step="0.01" min="0.01" name="dose" required>
             </label>
         </p>
-        <p>
-            <button type="submit" style="background:green; color:white; padding:10px 15px; cursor:pointer;">Confirmer l'alimentation</button>
+
+        </div>
+
+        <p class="bouton">
+            <button type="submit">Confirmer l'alimentation</button>
         </p>
     </form>
 </body>

@@ -20,13 +20,15 @@ oci_free_statement($stmt);
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../styleindex.css">
     <title>Soins</title>
 </head>
 <body>
     <a href="../../dashboard.php">← Retour au Dashboard</a>
     <h1>Registre des Soins</h1>
 
-    <a href="ajouter.php" style="display:inline-block; margin-bottom:15px; padding:8px 12px; background:#4CAF50; color:white; text-decoration:none;">+ Enregistrer un soin</a>
+    <a href="ajouter.php">+ Enregistrer un soin</a>
+    <br>
 
     <table border="1" cellpadding="8" cellspacing="0" width="100%">
         <thead>
@@ -58,9 +60,9 @@ oci_free_statement($stmt);
                     <td><?php echo htmlspecialchars($s['PRENOM_PERSONNEL'].' '.$s['NOM_PERSONNEL']); ?></td>
                     <td><?php echo htmlspecialchars($s['DESCRIPTION_SOIN']); ?></td>
                     <td>
-                        <a href="view.php?id=<?php echo urlencode($s['ID_SOIN']); ?>">Détails</a>
-                        <br><a href="modifier.php?id=<?php echo urlencode($s['ID_SOIN']); ?>">Modifier</a>
-                        <br><a href="supprimer.php?id=<?php echo urlencode($s['ID_SOIN']); ?>" style="color:red;">Supprimer</a>
+                        <a href="view.php?id=<?php echo urlencode($s['ID_SOIN']); ?>">Détails</a> |
+                        <a href="modifier.php?id=<?php echo urlencode($s['ID_SOIN']); ?>">Modifier</a> |
+                        <a href="supprimer.php?id=<?php echo urlencode($s['ID_SOIN']); ?>" style="color:red;">Supprimer</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

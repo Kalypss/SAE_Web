@@ -2,7 +2,7 @@ PROJET SAE - GESTION DE ZOO (WEB & BASE DE DONNÉES)
 
 MEMBRES DU BINÔME :
 - SILVA Florian - Numéro carte étudiant : 22407671
-- [Nom Camarade] [Prénom Camarade] - Numéro carte étudiant : [Numéro Camarade]
+- FAURE--MOUGEL Aaron - Numéro carte étudiant : 22401050
 
 -------------------------------------------------------------------
 COMPTES DE TESTS (Du plus privilégié au moins privilégié)

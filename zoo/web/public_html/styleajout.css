@@ -92,9 +92,10 @@ label{
 }
 .formul input{
     height: 40px;
-    width: 100%;
+    width: 98%;
     margin-top: 20px;
     border-radius: 30px;
+    padding-left: 15px;
 }
 .formul select{
     height: 40px;
@@ -102,4 +103,15 @@ label{
     margin-top: 20px;
     border-radius: 30px;
     padding-left: 15px;
+}
+.formul .coche label{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.coche input{
+    padding: 0;
+    align-items: center;
+    width: 50px;
+    padding-right: 40px;
 }

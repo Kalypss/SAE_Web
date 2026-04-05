@@ -58,6 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../styleajout.css">
     <title>Ajouter un enclos</title>
 </head>
 <body>
@@ -71,6 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php endif; ?>
 
     <form method="POST">
+        <div class="formul">
         <p>
             <label>Zone d'appartenance * :<br>
             <select name="id_zone" required>
@@ -99,8 +101,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="number" step="0.01" name="longitude" required placeholder="Ex: 1.23">
             </label>
         </p>
+        </div>
 
-        <p><button type="submit" style="background:#4CAF50; color:white; padding:10px 15px; cursor:pointer;">Enregistrer l'enclos</button></p>
+        <p class="bouton"><button type="submit">Enregistrer l'enclos</button></p>
     </form>
 </body>
 </html>

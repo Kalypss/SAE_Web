@@ -51,6 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../styleajout.css">
     <title>Ajouter une espèce</title>
 </head>
 <body>
@@ -64,6 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php endif; ?>
 
     <form method="POST">
+        <div class="formul">
         <p>
             <label>Nom Usuel / Commun * (ex. Lion d'Afrique) :<br>
             <input type="text" name="nomU" required placeholder="Nom couramment utilisé" size="40">
@@ -76,14 +78,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </label>
         </p>
 
-        <p>
+        <p class="coche">
             <label>
-            <input type="checkbox" name="est_menace" value="1">
-            <strong>Cocher si espèce menacée ou nécessitant des mesures de préservation spécifiques.</strong>
+                <input type="checkbox" name="est_menace" value="1">
+                <strong>Cocher si espèce menacée ou nécessitant des mesures de préservation spécifiques.</strong>
             </label>
         </p>
 
-        <p><button type="submit" style="background:#4CAF50; color:white; padding:10px 15px; cursor:pointer;">Enregistrer l'espèce</button></p>
+        </div>
+
+        <p class="bouton"><button type="submit">Enregistrer l'espèce</button></p>
     </form>
 </body>
 </html>

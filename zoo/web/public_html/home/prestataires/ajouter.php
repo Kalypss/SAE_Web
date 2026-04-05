@@ -45,6 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../styleajout.css">
     <title>Ajouter Prestataire</title>
 </head>
 <body>
@@ -58,6 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php endif; ?>
 
     <form method="POST">
+        <div class="formul">
         <p>
             <label>Nom de l'entreprise ou Artisan * :<br>
             <input type="text" name="nom_prestataire" required size="40">
@@ -69,8 +71,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="text" name="specialite_prestataire" required placeholder="Ex: Plomberie, Climatisation, Menuiserie..." size="40">
             </label>
         </p>
-
-        <p><button type="submit" style="background:#4CAF50; color:white; padding:10px 15px; cursor:pointer;">Enregistrer ce prestataire</button></p>
+        </div>
+        <p class="bouton"><button type="submit">Enregistrer ce prestataire</button></p>
     </form>
 </body>
 </html>

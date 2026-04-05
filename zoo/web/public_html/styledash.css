@@ -28,7 +28,6 @@ h1{
 }
 .bouton{
     display: flex;
-    flex-direction: column;
     gap: 15px;
 }
 .entete .bouton a{

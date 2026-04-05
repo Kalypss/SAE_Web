@@ -64,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../styleajout.css">
     <title>Ajouter un nouveau Parrainage</title>
 </head>
 <body>
@@ -77,6 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php endif; ?>
 
     <form method="POST">
+        <div class="formul">
         <p>
             <label>Visiteur Donateur :<br>
             <select name="id_visiteur" required>
@@ -119,9 +121,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="number" step="0.01" min="0" name="contribution" required>
             </label>
         </p>
+        </div>
 
-        <p>
-            <button type="submit" style="background:green; color:white; padding:10px 15px; cursor:pointer;">Facturer le Parrainage</button>
+        <p class="bouton">
+            <button type="submit">Facturer le Parrainage</button>
         </p>
     </form>
 </body>

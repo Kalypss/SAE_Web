@@ -175,8 +175,8 @@ oci_free_statement($st_enc);
                 </select>
             </label>
 
-            <label>
-                <input type="checkbox" name="menace" value="1" <?php if($filter_menace === 1) echo 'checked'; ?>> Espèces menacées seulement
+            <label class="lab">
+                <input class="checks" type="checkbox" name="menace" value="1" <?php if($filter_menace === 1) echo 'checked'; ?>> Espèces menacées seulement
             </label>
 
             <button type="submit">Filtrer</button>

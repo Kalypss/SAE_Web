@@ -63,6 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../styleajout.css">
     <title>Ajouter Réparation</title>
 </head>
 <body>
@@ -76,6 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php endif; ?>
 
     <form method="POST">
+        <div class="formul">
         <p>
             <label>Date de l'intervention * :<br>
             <input type="date" name="date_rep" required value="<?php echo date('Y-m-d'); ?>">
@@ -110,8 +112,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <textarea name="nature" required rows="4" cols="50" placeholder="Changement clôture, Peinture..."></textarea>
             </label>
         </p>
+        </div>
 
-        <p><button type="submit" style="background:#4CAF50; color:white; padding:10px 15px; cursor:pointer;">Enregistrer l'intervention</button></p>
+        <p class="bouton"><button type="submit">Enregistrer l'intervention</button></p>
     </form>
 </body>
 </html>

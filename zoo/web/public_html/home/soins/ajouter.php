@@ -64,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../styleajout.css">
     <title>Ajouter un soin</title>
 </head>
 <body>
@@ -77,6 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php endif; ?>
 
     <form method="POST">
+        <div class="formul">
         <p>
             <label>Patient (Animal) *:<br>
             <select name="animal_id" required>
@@ -123,8 +125,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <textarea name="description" rows="5" cols="50" placeholder="Observations, diagnostic, posologie..."></textarea>
             </label>
         </p>
+        </div>
 
-        <p><button type="submit" style="background:#4CAF50; color:white; padding:10px 15px; cursor:pointer;">Enregistrer ce soin</button></p>
+        <p class="bouton"><button type="submit">Enregistrer ce soin</button></p>
     </form>
 </body>
 </html>

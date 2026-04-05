@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../styleajout.php">
+    <link rel="stylesheet" href="../../styleajout.css">
     <title>Ajouter Boutique</title>
 </head>
 <body>
@@ -58,6 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php endif; ?>
 
     <form method="POST">
+        <div class="formul">
         <p>
             <label>Type de Boutique (Boutique de souvenirs, Snack, Restaurant...) :<br>
             <input type="text" name="type_boutique" required maxlength="255">
@@ -75,7 +76,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </select>
             </label>
         </p>
-        <p><button type="submit" style="background:green; color:white; padding:10px; cursor:pointer;">Ajouter cette Boutique</button></p>
+        </div>
+        <p class="bouton"><button type="submit">Ajouter cette Boutique</button></p>
     </form>
 </body>
 </html>

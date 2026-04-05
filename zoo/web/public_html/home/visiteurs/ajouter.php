@@ -47,6 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../styleajout.css">
     <title>Inscrire un Visiteur</title>
 </head>
 <body>
@@ -60,6 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php endif; ?>
 
     <form method="POST">
+        <div class="formul">
         <p>
             <label>Nom :<br>
             <input type="text" name="nom_visiteur" required maxlength="255">
@@ -77,9 +79,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="email" name="email_visiteur" required maxlength="255" placeholder="contact@email.com">
             </label>
         </p>
+        </div>
 
-        <p>
-            <button type="submit" style="background:green; color:white; padding:10px 15px; cursor:pointer;">Enregistrer ce Client</button>
+        <p class="bouton">
+            <button type="submit">Enregistrer ce Client</button>
         </p>
     </form>
 </body>

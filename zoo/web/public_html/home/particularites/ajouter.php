@@ -41,6 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../styleajout.css">
     <title>Ajouter Particularité</title>
 </head>
 <body>
@@ -54,13 +55,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php endif; ?>
 
     <form method="POST">
+        <div class="formul">
         <p>
             <label>Intitulé unique de la condition / caractéristique :<br>
             <input type="text" name="nom_particularite" required maxlength="250" placeholder="Agressif, Albinos, Hybride, Rare...">
             </label>
         </p>
-        <p>
-            <button type="submit" style="background:green; color:white; padding:10px 15px; cursor:pointer;">Injecter dans le système</button>
+        </div>
+        <p class="bouton">
+            <button type="submit">Injecter dans le système</button>
         </p>
     </form>
 </body>

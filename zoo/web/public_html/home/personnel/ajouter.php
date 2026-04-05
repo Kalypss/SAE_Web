@@ -59,6 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../styleajout.css">
     <title>Ajouter membre du personnel</title>
 </head>
 <body>
@@ -72,6 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php endif; ?>
 
     <form method="POST">
+        <div class="formul">
         <p>
             <label>Nom de famille *:<br>
             <input type="text" name="nom_personnel" required size="30">
@@ -114,8 +116,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="date" name="date_entree" required value="<?php echo date('Y-m-d'); ?>">
             </label>
         </p>
-
-        <p><button type="submit" style="background:#4CAF50; color:white; padding:10px 15px; cursor:pointer;">Créer la Fiche Employé</button></p>
+        </div>
+        <p class="bouton"><button type="submit">Créer la Fiche Employé</button></p>
     </form>
 </body>
 </html>

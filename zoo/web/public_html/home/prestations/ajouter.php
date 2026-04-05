@@ -45,6 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../styleajout.css">
     <title>Ajouter Prestation</title>
 </head>
 <body>
@@ -58,6 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php endif; ?>
 
     <form method="POST">
+        <div class="formul">
         <p>
             <label>Description du Service/Activité :<br>
             <input type="text" name="description" required maxlength="250" style="width: 350px;">
@@ -73,9 +75,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </select>
             </label>
         </p>
+        </div>
 
-        <p>
-            <button type="submit" style="background:green; color:white; padding:10px 15px; cursor:pointer;">Valider l'offre</button>
+        <p class="bouton">
+            <button type="submit">Valider l'offre</button>
         </p>
     </form>
 </body>

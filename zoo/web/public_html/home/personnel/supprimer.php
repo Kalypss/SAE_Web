@@ -31,32 +31,38 @@ $error = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['confirm_delete'])) {
     
-    // Tenter de supprimer l'employé
-    $sql = "DELETE FROM Personnel WHERE id_personnel = :id";
-    $del = oci_parse($conn, $sql);
-    oci_bind_by_name($del, ':id', $id_pers);
+    // Anonymisation (Soft-Delete) pour préserver l'historique (Animaux, Soins, Alimentation)
+    // au lieu de réassigner au suppresseur ou de provoquer une erreur de contrainte.
+    $sql_updates = [
+        "UPDATE Personnel SET id_personnel_chef = NULL WHERE id_personnel_chef = :id",
+        "UPDATE Personnel SET id_personnel_remplacant = NULL WHERE id_personnel_remplacant = :id",
+        "DELETE FROM Etre_specialiste_de WHERE id_personnel = :id",
+        "DELETE FROM Personnel_Boutique WHERE id_personnel = :id",
+        // Écraser les données personnelles (nom, prénom) et bloquer le mot de passe
+        // On n'efface pas l'historique_emploi ni les animaux à charge, pour garder la trace
+        "UPDATE Personnel SET nom_personnel = 'SUPPRIME', prenom_personnel = 'PROFIL', pwd_personnel = 'DISABLED_ACCOUNT' WHERE id_personnel = :id"
+    ];
     
-    $r = @oci_execute($del, OCI_COMMIT_ON_SUCCESS);
-    
-    if ($r) {
-        // Redirection vers le listing après suppression
+    $error_occurred = false;
+    foreach ($sql_updates as $req) {
+        $st = oci_parse($conn, $req);
+        oci_bind_by_name($st, ':id', $id_pers);
+        $r = @oci_execute($st, OCI_COMMIT_ON_SUCCESS);
+        
+        if (!$r) {
+            $e = oci_error($st);
+            $message = "Erreur d'anonymisation : " . htmlentities($e['message']);
+            $error_occurred = true;
+            break;
+        }
+        oci_free_statement($st);
+    }
+
+    if (!$error_occurred) {
+        // Redirection vers le listing après anonymisation
         header("Location: index.php?msg=deleted");
         exit;
-    } else {
-        $e = oci_error($del);
-        $error_msg = htmlentities($e['message']);
-        
-        $error = true;
-        // Décryptage des erreurs de clés étrangères d'Oracle en langage compréhensible
-        if (strpos($error_msg, 'ORA-02292') !== false) {
-            $message = "<strong>Rupture de Contrainte d'Intégrité :</strong> Impossible d'effacer cet employé :<br>
-                        Ce membre du personnel est actuellement rattaché à des enregistrements de la base de données (Animaux sous sa responsabilité, Historique de soins effectués, Affectation à une boutique ou Historique d'emplois).<br><br>
-                        <strong>Solution selon la procédure Zoo'land 2026 :</strong> Vous devez utiliser l'interface de modification afin de transférer ses responsabilités à un autre soigneur / vétérinaire, ou bien effacer l'historique associé avec prudence, avant de licencier définitivement son profil.";
-        } else {
-            $message = "Erreur critique de la Base de Données : " . $error_msg;
-        }
     }
-    oci_free_statement($del);
 }
 ?>
 <!DOCTYPE html>

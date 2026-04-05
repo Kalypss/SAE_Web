@@ -61,6 +61,7 @@ return [
     '/public_html/home/visiteurs/index.php' => ['gérant', 'boutique'],
     '/public_html/home/visiteurs/view.php' => ['gérant', 'boutique'],
     '/public_html/home/visiteurs/ajouter.php' => ['gérant', 'boutique'],
+    '/public_html/home/visiteurs/supprimer.php' => ['gérant', 'boutique'],
     '/public_html/home/parrainages/index.php' => ['gérant', 'boutique', 'soignant'],
     '/public_html/home/parrainages/ajouter.php' => ['gérant', 'boutique'],
     '/public_html/home/prestations/index.php' => ['gérant', 'boutique'],

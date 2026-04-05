@@ -51,6 +51,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_delete'])) {
     @oci_execute($del, OCI_DEFAULT);
     oci_free_statement($del);
 
+    // Attribuer (lié au parrainage)
+    $del = oci_parse($conn, "DELETE FROM Attribuer WHERE id_parrainage IN (SELECT id_parrainage FROM Parrainage WHERE id_animaux = :id)");
+    oci_bind_by_name($del, ':id', $id_animal);
+    @oci_execute($del, OCI_DEFAULT);
+    oci_free_statement($del);
+
     // Parrainage
     $del = oci_parse($conn, "DELETE FROM Parrainage WHERE id_animaux = :id");
     oci_bind_by_name($del, ':id', $id_animal);

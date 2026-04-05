@@ -37,6 +37,7 @@ oci_free_statement($stmt);
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>Adresse E-mail</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -46,6 +47,9 @@ oci_free_statement($stmt);
                     <td><?php echo htmlspecialchars($v['NOM_VISITEUR']); ?></td>
                     <td><?php echo htmlspecialchars($v['PRENOM_VISITEUR']); ?></td>
                     <td><a href="mailto:<?php echo htmlspecialchars($v['EMAIL_VISITEUR']); ?>"><?php echo htmlspecialchars($v['EMAIL_VISITEUR']); ?></a></td>
+                    <td>
+                        <a href="supprimer.php?id=<?php echo urlencode($v['ID_VISITEUR']); ?>" style="color: red;">Supprimer</a>
+                    </td>
                 </tr>
             <?php endforeach; ?>
             <?php if (empty($visiteurs)): ?>

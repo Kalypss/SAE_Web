@@ -40,19 +40,23 @@ return [
     '/public_html/home/enclos/ajouter.php' => ['gérant', 'technique'],
     '/public_html/home/enclos/view.php' => ['gérant', 'veterinaire', 'technique'],
     '/public_html/home/enclos/modifier.php' => ['gérant', 'technique'],
-    '/public_html/home/particularites/index.php' => ['gérant', 'technique'],
-    '/public_html/home/zones/index.php' => ['gérant'],
+    '/public_html/home/particularites/index.php' => ['gérant', 'technique', 'veterinaire', 'soignant'],
+    '/public_html/home/particularites/ajouter.php' => ['gérant', 'veterinaire'],
+    '/public_html/home/zones/index.php' => ['gérant', 'technique', 'veterinaire', 'soignant', 'boutique'],
+    '/public_html/home/zones/ajouter.php' => ['gérant', 'technique'],
     '/public_html/home/reparations/index.php' => ['gérant', 'technique'],
     '/public_html/home/reparations/ajouter.php' => ['gérant', 'technique'],
     '/public_html/home/prestataires/index.php' => ['gérant', 'technique'],
     '/public_html/home/prestataires/ajouter.php' => ['gérant'],
+
     // Personnel
     '/public_html/home/personnel/index.php' => ['gérant'],
     '/public_html/home/personnel/ajouter.php' => ['gérant'],
     '/public_html/home/personnel/view.php' => ['gérant'],
     '/public_html/home/personnel/modifier.php' => ['gérant'],
     '/public_html/home/personnel/historique.php' => ['gérant'],
-    '/public_html/home/personnel/supprimer.php' => ['gérant'], // Sécurité ajoutée pour licencier un membre du personnel
+    '/public_html/home/personnel/supprimer.php' => ['gérant'],
+
     // Public / Commercial (Visiteurs, Parrainages, Boutiques...)
     '/public_html/home/visiteurs/index.php' => ['gérant', 'boutique'],
     '/public_html/home/visiteurs/view.php' => ['gérant', 'boutique'],
@@ -60,7 +64,12 @@ return [
     '/public_html/home/parrainages/index.php' => ['gérant', 'boutique', 'soignant'],
     '/public_html/home/parrainages/ajouter.php' => ['gérant', 'boutique'],
     '/public_html/home/prestations/index.php' => ['gérant', 'boutique'],
+    '/public_html/home/prestations/ajouter.php' => ['gérant', 'boutique'],
     '/public_html/home/boutiques/index.php' => ['gérant', 'boutique'],
     '/public_html/home/boutiques/view.php' => ['gérant', 'boutique'],
+    '/public_html/home/boutiques/ajouter.php' => ['gérant', 'boutique'],
+    '/public_html/home/boutiques/modifier.php' => ['gérant', 'boutique'],
+    '/public_html/home/boutiques/affecter_personnel.php' => ['gérant', 'boutique'],
+    '/public_html/home/boutiques/ajouter_ca.php' => ['gérant', 'boutique'],
     '/public_html/home/chiffre-affaires/ajouter.php' => ['gérant', 'boutique']
 ];

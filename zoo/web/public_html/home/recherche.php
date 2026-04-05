@@ -106,7 +106,7 @@ if (!empty(trim($searchQuery))) {
 </head>
 <body>
 
-    <a href="dashboard.php" class="back-link">← Retour au dashboard</a>
+    <a href="../dashboard.php" class="back-link">← Retour au dashboard</a>
 
     <div class="search-container">
         <h1>Recherche Globale</h1>
@@ -131,7 +131,7 @@ if (!empty(trim($searchQuery))) {
                                     <strong><?php echo htmlspecialchars($animal['NOM_ANIMAL'] ?? '—'); ?></strong>
                                     <div class="result-item-sub">RFID : <?php echo htmlspecialchars($animal['RFID_ANIMAL'] ?? 'N/A'); ?></div>
                                 </div>
-                                <a href="/public_html/animaux/view.php?id=<?php echo urlencode($animal['ID_ANIMAUX']); ?>" class="btn-view">Consulter</a>
+                                <a href="/public_html/home/animaux/view.php?id=<?php echo urlencode($animal['ID_ANIMAUX']); ?>" class="btn-view">Consulter</a>
                             </li>
                         <?php endforeach; ?>
                     <?php else: ?>
@@ -153,7 +153,7 @@ if (!empty(trim($searchQuery))) {
                                     <strong><?php echo htmlspecialchars($espece['NOMU_ESPECE'] ?? '—'); ?></strong>
                                     <div class="result-item-sub">Nom latin : <em><?php echo htmlspecialchars($espece['NOML_ESPECE'] ?? '—'); ?></em></div>
                                 </div>
-                                <a href="/public_html/especes/view.php?id=<?php echo urlencode($espece['ID_ESPECE']); ?>" class="btn-view">Consulter</a>
+                                <a href="/public_html/home/especes/view.php?id=<?php echo urlencode($espece['ID_ESPECE']); ?>" class="btn-view">Consulter</a>
                             </li>
                         <?php endforeach; ?>
                     <?php else: ?>
@@ -175,7 +175,7 @@ if (!empty(trim($searchQuery))) {
                                     <strong><?php echo htmlspecialchars($pers['PRENOM_PERSONNEL'] . ' ' . $pers['NOM_PERSONNEL']); ?></strong>
                                     <div class="result-item-sub">Rôle : <?php echo htmlspecialchars(ucfirst($pers['TYPE_PERSONNEL'])); ?></div>
                                 </div>
-                                <a href="/public_html/personnel/view.php?id=<?php echo urlencode($pers['ID_PERSONNEL']); ?>" class="btn-view">Consulter</a>
+                                <a href="/public_html/home/personnel/view.php?id=<?php echo urlencode($pers['ID_PERSONNEL']); ?>" class="btn-view">Consulter</a>
                             </li>
                         <?php endforeach; ?>
                     <?php else: ?>
@@ -197,7 +197,7 @@ if (!empty(trim($searchQuery))) {
                                     <strong><?php echo htmlspecialchars($visiteur['PRENOM_VISITEUR'] . ' ' . $visiteur['NOM_VISITEUR']); ?></strong>
                                     <div class="result-item-sub">Email : <?php echo htmlspecialchars($visiteur['EMAIL_VISITEUR'] ?? 'N/A'); ?></div>
                                 </div>
-                                <a href="/public_html/visiteurs/view.php?id=<?php echo urlencode($visiteur['ID_VISITEUR']); ?>" class="btn-view">Consulter</a>
+                                <a href="/public_html/home/visiteurs/view.php?id=<?php echo urlencode($visiteur['ID_VISITEUR']); ?>" class="btn-view">Consulter</a>
                             </li>
                         <?php endforeach; ?>
                     <?php else: ?>

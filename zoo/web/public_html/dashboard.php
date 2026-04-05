@@ -109,8 +109,9 @@ if ($role === 'gérant') {
             <li><strong>Salaire :</strong> <?php echo htmlspecialchars($employee['SALAIRE_PERSONNEL']); ?> €</li>
         </ul>
         <br>
-        <a href="logout.php" >Se déconnecter</a>
-        <a href="home/profil/mot-de-passe.php">Mon Mot de passe</a>
+        <a href="logout.php" style="margin-right: 15px;">Se déconnecter</a>
+        <a href="home/profil/mot-de-passe.php" style="margin-right: 15px;">Mon Mot de passe</a>
+        <a href="home/recherche.php" style="font-weight: bold; color: #2196F3;">Recherche Globale</a>
     </div>
 
     <h2>Vos Tableaux de Bord (KPIs)</h2>

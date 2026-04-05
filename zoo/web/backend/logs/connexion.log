@@ -27,3 +27,11 @@
 [2026-04-04 21:39:46] IP: 172.20.0.1 | USER: 1235 | STATUS: SUCCESS
 [2026-04-04 21:41:33] IP: 172.20.0.1 | USER: test2 | STATUS: ACCES REFUSE 403: Role veterinaire vers /public_html/home/personnel/view.php
 [2026-04-04 21:59:06] IP: 172.20.0.1 | USER: 999 | STATUS: SUCCESS
+[2026-04-05 15:36:24] IP: 172.20.0.1 | USER: 999 | STATUS: SUCCESS
+[2026-04-05 15:38:38] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE: Page inconnue (/public_html/home/boutiques/ajouter.php)
+[2026-04-05 15:46:34] IP: 172.20.0.1 | USER: ANONYMOUS | STATUS: ACCES REFUSE: Non authentifié vers /public_html/dashboard.php
+[2026-04-05 15:46:39] IP: 172.20.0.1 | USER: 999 | STATUS: SUCCESS
+[2026-04-05 15:46:51] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE 403: Role technique vers /public_html/home/particularites/ajouter.php
+[2026-04-05 15:47:05] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE 403: Role technique vers /public_html/home/animaux/view.php
+[2026-04-05 15:47:26] IP: 172.20.0.1 | USER: test | STATUS: ACCES REFUSE 403: Role technique vers /public_html/home/animaux/view.php
+[2026-04-05 15:50:36] IP: 172.20.0.1 | USER: 999 | STATUS: SUCCESS
